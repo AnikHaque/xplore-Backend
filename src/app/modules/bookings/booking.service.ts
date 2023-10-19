@@ -39,7 +39,7 @@ const getAllBookings = async (paginationOptions: IPaginationOptions) => {
 const insertIntoDB = async (payload: any) => {
   const { serviceId, startDate, endDate, userId, room } = payload;
 
-  // Check if the user and service exist
+  
   const user = (await User.findById(userId)) as any;
   if (!user) {
     throw new ApiError(404, 'User not found');
