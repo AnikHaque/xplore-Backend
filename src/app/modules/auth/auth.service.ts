@@ -74,8 +74,7 @@ const loginUser = async (payload: ILoginUser): Promise<ILoginUserResponse> => {
 };
 
 const refreshToken = async (token: string): Promise<IRefreshTokenResponse> => {
-  //verify token
-  // invalid token - synchronous
+ 
   let verifiedToken = null;
   try {
     verifiedToken = jwtHelpers.verifyToken(
