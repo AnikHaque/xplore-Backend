@@ -4,7 +4,7 @@ import sendResponse from '../../../shared/sendResponse';
 import { AnalyticsService } from './analytics.service';
 import catchAsync from '../../../shared/catchasync';
 
-//get users analytics only for admin
+
 const getUsersAnalytics: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {
     const result = await AnalyticsService.getUsersAnalytics();
@@ -17,7 +17,7 @@ const getUsersAnalytics: RequestHandler = catchAsync(
     });
   },
 );
-//get courses analytics only for admin
+
 const getCourseAnalytics: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {
     const result = await AnalyticsService.getCourseAnalytics();
@@ -30,7 +30,7 @@ const getCourseAnalytics: RequestHandler = catchAsync(
     });
   },
 );
-//get orders analytics only for admin
+
 const getOrdersAnalytics: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {
     const result = await AnalyticsService.getOrdersAnalytics();
