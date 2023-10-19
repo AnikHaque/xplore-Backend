@@ -1,0 +1,76 @@
+Sun Oct 15 2023 22:4 17 [AP] error: globalErrorHandler request entity too large
+Sun Oct 15 2023 22:4 41 [AP] error: globalErrorHandler [
+  {
+    "code": "invalid_type",
+    "expected": "object",
+    "received": "string",
+    "path": [
+      "body",
+      "thumbnail"
+    ],
+    "message": "Expected object, received string"
+  }
+]
+Sun Oct 15 2023 22:28 55 [AP] error: globalErrorHandler request entity too large
+Sun Oct 15 2023 22:44 17 [AP] error: globalErrorHandler Category already exists
+Sun Oct 15 2023 22:44 28 [AP] error: globalErrorHandler Category already exists
+Sun Oct 15 2023 22:44 39 [AP] error: globalErrorHandler Category already exists
+Sun Oct 15 2023 22:44 58 [AP] error: globalErrorHandler Category already exists
+Sun Oct 15 2023 22:46 9 [AP] error: globalErrorHandler Category already exists
+Sun Oct 15 2023 22:46 37 [AP] error: globalErrorHandler Category already exists
+Sun Oct 15 2023 22:50 14 [AP] error: globalErrorHandler Category already exists
+Sun Oct 15 2023 22:50 23 [AP] error: globalErrorHandler Category already exists
+Sun Oct 15 2023 22:52 0 [AP] error: globalErrorHandler Category already exists
+Sun Oct 15 2023 22:53 4 [AP] error: globalErrorHandler [
+  {
+    "code": "invalid_type",
+    "expected": "object",
+    "received": "string",
+    "path": [
+      "body",
+      "thumbnail"
+    ],
+    "message": "Expected object, received string"
+  }
+]
+Sun Oct 15 2023 22:54 11 [AP] error: globalErrorHandler [
+  {
+    "code": "invalid_type",
+    "expected": "object",
+    "received": "string",
+    "path": [
+      "body",
+      "thumbnail"
+    ],
+    "message": "Expected object, received string"
+  }
+]
+Sun Oct 15 2023 22:54 17 [AP] error: globalErrorHandler [
+  {
+    "code": "invalid_type",
+    "expected": "object",
+    "received": "string",
+    "path": [
+      "body",
+      "thumbnail"
+    ],
+    "message": "Expected object, received string"
+  }
+]
+Sun Oct 15 2023 22:54 29 [AP] error: globalErrorHandler [
+  {
+    "code": "invalid_type",
+    "expected": "object",
+    "received": "string",
+    "path": [
+      "body",
+      "thumbnail"
+    ],
+    "message": "Expected object, received string"
+  }
+]
+Sun Oct 15 2023 22:56 2 [AP] error: globalErrorHandler Category validation failed: thumbnail: Path `thumbnail` is required.
+Sun Oct 15 2023 22:56 27 [AP] error: globalErrorHandler Category validation failed: thumbnail: Cast to string failed for value "{
+  public_id: 'category/yntzi3lvfj6tw3zarxiw',
+  url: 'https://res.cloudinary.com/arafatleo/image/upload/v1697388998/category/yntzi3lvfj6tw3zarxiw.jpg'
+}" (type Object) at path "thumbnail"

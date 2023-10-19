@@ -1,0 +1,147 @@
+{
+  cause: Error: connect ETIMEDOUT 15.206.156.208:27017
+      at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1187:16) {
+    errno: -4039,
+    code: 'ETIMEDOUT',
+    syscall: 'connect',
+    address: '15.206.156.208',
+    port: 27017
+  },
+  connectionGeneration: 0,
+  level: 'error',
+  label: 'AP',
+  timestamp: '2023-10-12T15:02:52.715Z',
+  [Symbol(errorLabels)]: Set(1) { 'ResetPool' }
+}
+{
+  message: 'DB Connected on Successfully',
+  level: 'info',
+  label: 'AP',
+  timestamp: '2023-10-12T15:06:44.965Z'
+}
+{
+  message: 'Example app listening on port 5000',
+  level: 'info',
+  label: 'AP',
+  timestamp: '2023-10-12T15:06:44.977Z'
+}
+{
+  message: 'DB Connected on Successfully',
+  level: 'info',
+  label: 'AP',
+  timestamp: '2023-10-12T15:08:16.035Z'
+}
+{
+  message: 'Example app listening on port 5000',
+  level: 'info',
+  label: 'AP',
+  timestamp: '2023-10-12T15:08:16.046Z'
+}
+{
+  message: 'DB Connected on Successfully',
+  level: 'info',
+  label: 'AP',
+  timestamp: '2023-10-12T15:19:29.362Z'
+}
+{
+  message: 'Example app listening on port 5000',
+  level: 'info',
+  label: 'AP',
+  timestamp: '2023-10-12T15:19:29.379Z'
+}
+{
+  message: 'DB Connected on Successfully',
+  level: 'info',
+  label: 'AP',
+  timestamp: '2023-10-12T15:23:09.577Z'
+}
+{
+  message: 'Example app listening on port 5000',
+  level: 'info',
+  label: 'AP',
+  timestamp: '2023-10-12T15:23:09.595Z'
+}
+{
+  message: 'DB Connected on Successfully',
+  level: 'info',
+  label: 'AP',
+  timestamp: '2023-10-12T15:24:02.776Z'
+}
+{
+  message: 'Example app listening on port 5000',
+  level: 'info',
+  label: 'AP',
+  timestamp: '2023-10-12T15:24:02.787Z'
+}
+{
+  message: 'DB Connected on Successfully',
+  level: 'info',
+  label: 'AP',
+  timestamp: '2023-10-12T15:24:40.963Z'
+}
+{
+  message: 'Example app listening on port 5000',
+  level: 'info',
+  label: 'AP',
+  timestamp: '2023-10-12T15:24:40.975Z'
+}
+{
+  message: 'DB Connected on Successfully',
+  level: 'info',
+  label: 'AP',
+  timestamp: '2023-10-12T15:25:41.211Z'
+}
+{
+  message: 'Example app listening on port 5000',
+  level: 'info',
+  label: 'AP',
+  timestamp: '2023-10-12T15:25:41.224Z'
+}
+{
+  message: 'DB Connected on Successfully',
+  level: 'info',
+  label: 'AP',
+  timestamp: '2023-10-12T15:26:30.162Z'
+}
+{
+  message: 'Example app listening on port 5000',
+  level: 'info',
+  label: 'AP',
+  timestamp: '2023-10-12T15:26:30.178Z'
+}
+{
+  message: 'DB Connected on Successfully',
+  level: 'info',
+  label: 'AP',
+  timestamp: '2023-10-12T15:28:24.920Z'
+}
+{
+  message: 'Example app listening on port 5000',
+  level: 'info',
+  label: 'AP',
+  timestamp: '2023-10-12T15:28:24.931Z'
+}
+{
+  message: 'DB Connected on Successfully',
+  level: 'info',
+  label: 'AP',
+  timestamp: '2023-10-12T15:29:32.369Z'
+}
+{
+  message: 'Example app listening on port 5000',
+  level: 'info',
+  label: 'AP',
+  timestamp: '2023-10-12T15:29:32.382Z'
+}
+{
+  message: 'DB Connected on Successfully',
+  level: 'info',
+  label: 'AP',
+  timestamp: '2023-10-12T15:30:11.415Z'
+}
+{
+  message: 'Example app listening on port 5000',
+  level: 'info',
+  label: 'AP',
+  timestamp: '2023-10-12T15:30:11.425Z'
+}

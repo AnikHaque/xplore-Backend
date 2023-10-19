@@ -1,0 +1,16 @@
+Thu Oct 12 2023 14:19 56 [AP] error: querySrv ECONNREFUSED _mongodb._tcp.cluster0.tjc9clz.mongodb.net
+Thu Oct 12 2023 14:20 4 [AP] error: querySrv ECONNREFUSED _mongodb._tcp.cluster0.tjc9clz.mongodb.net
+Thu Oct 12 2023 14:20 9 [AP] error: querySrv ECONNREFUSED _mongodb._tcp.cluster0.tjc9clz.mongodb.net
+Thu Oct 12 2023 14:20 41 [AP] error: querySrv ECONNREFUSED _mongodb._tcp.cluster0.tjc9clz.mongodb.net
+Thu Oct 12 2023 14:22 20 [AP] error: querySrv ECONNREFUSED _mongodb._tcp.cluster0.tjc9clz.mongodb.net
+Thu Oct 12 2023 14:26 16 [AP] error: querySrv ECONNREFUSED _mongodb._tcp.cluster0.tjc9clz.mongodb.net
+Thu Oct 12 2023 14:26 50 [AP] error: querySrv ECONNREFUSED _mongodb._tcp.cluster0.tjc9clz.mongodb.net
+Thu Oct 12 2023 14:27 1 [AP] error: querySrv ECONNREFUSED _mongodb._tcp.cluster0.tjc9clz.mongodb.net
+Thu Oct 12 2023 14:28 41 [AP] error: querySrv ECONNREFUSED _mongodb._tcp.cluster0.tjc9clz.mongodb.net
+Thu Oct 12 2023 14:28 48 [AP] error: querySrv ECONNREFUSED _mongodb._tcp.cluster0.tjc9clz.mongodb.net
+Thu Oct 12 2023 14:34 23 [AP] error: globalErrorHandler Cast to ObjectId failed for value "{ title: 'Room Title ' }" (type Object) at path "rooms" because of "BSONError"
+Thu Oct 12 2023 14:35 31 [AP] error: globalErrorHandler Cast to ObjectId failed for value "Room Title " (type string) at path "rooms" because of "BSONError"
+Thu Oct 12 2023 14:38 1 [AP] error: globalErrorHandler Cast to ObjectId failed for value "Room Title " (type string) at path "rooms" because of "BSONError"
+Thu Oct 12 2023 14:38 30 [AP] error: globalErrorHandler Cast to ObjectId failed for value "{ title: 'Room Title ' }" (type Object) at path "rooms" because of "BSONError"
+Thu Oct 12 2023 14:40 44 [AP] error: globalErrorHandler Cast to ObjectId failed for value "{ title: 'test update' }" (type Object) at path "rooms" because of "BSONError"
+Thu Oct 12 2023 14:42 39 [AP] error: globalErrorHandler Cast to ObjectId failed for value "{ title: 'test update' }" (type Object) at path "rooms" because of "BSONError"

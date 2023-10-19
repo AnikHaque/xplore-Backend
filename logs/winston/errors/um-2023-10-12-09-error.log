@@ -1,0 +1,5 @@
+Thu Oct 12 2023 9:12 19 [AP] error: querySrv ETIMEOUT _mongodb._tcp.cluster0.tjc9clz.mongodb.net
+Thu Oct 12 2023 9:29 9 [AP] error: globalErrorHandler User validation failed: role: Path `role` is required.
+Thu Oct 12 2023 9:30 40 [AP] error: globalErrorHandler User validation failed: role: Path `role` is required.
+Thu Oct 12 2023 9:32 44 [AP] error: globalErrorHandler User validation failed: role: Path `role` is required.
+Thu Oct 12 2023 9:35 1 [AP] error: globalErrorHandler Activation code is not valid

@@ -1,0 +1,8 @@
+Thu Oct 12 2023 13:0 12 [AP] error: globalErrorHandler The "path" argument must be of type string. Received an instance of Object
+Thu Oct 12 2023 13:4 20 [AP] error: globalErrorHandler The "path" argument must be of type string. Received an instance of Object
+Thu Oct 12 2023 13:5 32 [AP] error: globalErrorHandler The "path" argument must be of type string. Received an instance of Object
+Thu Oct 12 2023 13:13 13 [AP] error: globalErrorHandler The "path" argument must be of type string. Received an instance of Object
+Thu Oct 12 2023 13:19 1 [AP] error: globalErrorHandler The "path" argument must be of type string. Received an instance of Object
+Thu Oct 12 2023 13:39 13 [AP] error: globalErrorHandler The "path" argument must be of type string. Received an instance of Object
+Thu Oct 12 2023 13:44 18 [AP] error: querySrv ETIMEOUT _mongodb._tcp.cluster0.tjc9clz.mongodb.net
+Thu Oct 12 2023 13:47 24 [AP] error: querySrv ECONNREFUSED _mongodb._tcp.cluster0.tjc9clz.mongodb.net

@@ -1,0 +1,30 @@
+{
+  errno: undefined,
+  code: 'ECONNREFUSED',
+  syscall: 'querySrv',
+  hostname: '_mongodb._tcp.cluster0.tjc9clz.mongodb.net',
+  level: 'error',
+  label: 'AP',
+  timestamp: '2023-10-17T15:47:56.079Z'
+}
+{
+  errno: undefined,
+  code: 'ECONNREFUSED',
+  syscall: 'querySrv',
+  hostname: '_mongodb._tcp.cluster0.tjc9clz.mongodb.net',
+  level: 'error',
+  label: 'AP',
+  timestamp: '2023-10-17T15:48:27.893Z'
+}
+{
+  message: 'DB Connected on Successfully',
+  level: 'info',
+  label: 'AP',
+  timestamp: '2023-10-17T15:49:03.763Z'
+}
+{
+  message: 'Example app listening on port 5000',
+  level: 'info',
+  label: 'AP',
+  timestamp: '2023-10-17T15:49:03.774Z'
+}

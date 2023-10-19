@@ -1,0 +1,4 @@
+Thu Oct 12 2023 15:16 29 [AP] error: querySrv ETIMEOUT _mongodb._tcp.cluster0.tjc9clz.mongodb.net
+Thu Oct 12 2023 15:22 48 [AP] error: querySrv ECONNREFUSED _mongodb._tcp.cluster0.tjc9clz.mongodb.net
+Thu Oct 12 2023 15:23 4 [AP] error: querySrv ECONNREFUSED _mongodb._tcp.cluster0.tjc9clz.mongodb.net
+Thu Oct 12 2023 15:27 49 [AP] error: globalErrorHandler You are not authorized

@@ -1,0 +1,11 @@
+Fri Oct 13 2023 14:39 49 [AP] error: globalErrorHandler Booking validation failed: totalPrice: Cast to Number failed for value "NaN" (type number) at path "totalPrice"
+Fri Oct 13 2023 14:40 47 [AP] error: globalErrorHandler endDate.getTime is not a function
+Fri Oct 13 2023 14:42 52 [AP] error: globalErrorHandler Invalid endDate
+Fri Oct 13 2023 14:48 37 [AP] error: globalErrorHandler endDate.getTime is not a function
+Fri Oct 13 2023 14:50 3 [AP] error: globalErrorHandler Rooms are already booked for the specified date range
+Fri Oct 13 2023 14:50 22 [AP] error: globalErrorHandler Invalid booking duration
+Fri Oct 13 2023 14:51 20 [AP] error: globalErrorHandler Rooms are already booked for the specified date range
+Fri Oct 13 2023 14:52 37 [AP] error: globalErrorHandler Rooms are already booked for the specified date range
+Fri Oct 13 2023 14:59 12 [AP] error: globalErrorHandler Rooms are already booked for the specified date range
+Fri Oct 13 2023 14:59 25 [AP] error: globalErrorHandler Rooms are already booked for the specified date range
+Fri Oct 13 2023 14:59 37 [AP] error: globalErrorHandler Rooms are already booked for the specified date range

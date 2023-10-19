@@ -1,0 +1,172 @@
+Wed Oct 11 2023 12:4 21 [AP] error: globalErrorHandler User validation failed: role: Path `role` is required., address: Path `address` is required., phoneNumber: Path `phoneNumber` is required.
+Wed Oct 11 2023 12:5 29 [AP] error: globalErrorHandler User validation failed: role: Path `role` is required., address: Path `address` is required., phoneNumber: Path `phoneNumber` is required.
+Wed Oct 11 2023 12:6 26 [AP] error: globalErrorHandler User validation failed: role: Path `role` is required., address: Path `address` is required., phoneNumber: Path `phoneNumber` is required.
+Wed Oct 11 2023 12:9 39 [AP] error: globalErrorHandler E11000 duplicate key error collection: assignment-nine.users index: email_1 dup key: { email: "seller@gmail.com" }
+Wed Oct 11 2023 12:10 7 [AP] error: globalErrorHandler E11000 duplicate key error collection: assignment-nine.users index: email_1 dup key: { email: "seller@gmail.com" }
+Wed Oct 11 2023 12:10 26 [AP] error: globalErrorHandler E11000 duplicate key error collection: assignment-nine.users index: email_1 dup key: { email: "seller@gmail.com" }
+Wed Oct 11 2023 12:19 6 [AP] error: globalErrorHandler E11000 duplicate key error collection: assignment-nine.users index: phoneNumber_1 dup key: { phoneNumber: null }
+Wed Oct 11 2023 12:20 23 [AP] error: globalErrorHandler E11000 duplicate key error collection: assignment-nine.users index: phoneNumber_1 dup key: { phoneNumber: null }
+Wed Oct 11 2023 12:22 38 [AP] error: globalErrorHandler E11000 duplicate key error collection: assignment-nine.users index: email_1 dup key: { email: "seller@gmail.com" }
+Wed Oct 11 2023 12:25 2 [AP] error: globalErrorHandler [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "name"
+    ],
+    "message": "Name is required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "email"
+    ],
+    "message": "Email  is required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "password"
+    ],
+    "message": "Password is required"
+  }
+]
+Wed Oct 11 2023 12:25 30 [AP] error: globalErrorHandler [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "name"
+    ],
+    "message": "Name is required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "email"
+    ],
+    "message": "Email  is required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "password"
+    ],
+    "message": "Password is required"
+  }
+]
+Wed Oct 11 2023 12:25 58 [AP] error: globalErrorHandler [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "name"
+    ],
+    "message": "Name is required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "email"
+    ],
+    "message": "Email  is required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "password"
+    ],
+    "message": "Password is required"
+  }
+]
+Wed Oct 11 2023 12:28 49 [AP] error: globalErrorHandler [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "name"
+    ],
+    "message": "Name is required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "email"
+    ],
+    "message": "Email  is required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "password"
+    ],
+    "message": "Password is required"
+  }
+]
+Wed Oct 11 2023 12:30 19 [AP] error: globalErrorHandler User validation failed: password: Path `password` is required., email: Path `email` is required., name: Path `name` is required.
+Wed Oct 11 2023 12:31 7 [AP] error: globalErrorHandler User validation failed: password: Path `password` is required., email: Path `email` is required., name: Path `name` is required.
+Wed Oct 11 2023 12:32 28 [AP] error: globalErrorHandler User validation failed: password: Path `password` is required., email: Path `email` is required., name: Path `name` is required.
+Wed Oct 11 2023 12:35 48 [AP] error: globalErrorHandler [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "name"
+    ],
+    "message": "Name is required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "email"
+    ],
+    "message": "Email  is required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "password"
+    ],
+    "message": "Password is required"
+  }
+]

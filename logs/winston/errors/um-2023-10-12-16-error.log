@@ -1,0 +1,2 @@
+Thu Oct 12 2023 16:18 6 [AP] error: globalErrorHandler You are not authorized
+Thu Oct 12 2023 16:59 15 [AP] error: globalErrorHandler Category validation failed: category: `delux` is not a valid enum value for path `category`.

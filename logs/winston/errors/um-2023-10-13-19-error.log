@@ -1,0 +1,6 @@
+Fri Oct 13 2023 19:16 39 [AP] error: globalErrorHandler Blog not found
+Fri Oct 13 2023 19:21 41 [AP] error: globalErrorHandler Blog validation failed: avatar.url: Path `avatar.url` is required., avatar.public_id: Path `avatar.public_id` is required.
+Fri Oct 13 2023 19:27 1 [AP] error: globalErrorHandler Parameter "filter" to findOne() must be an object, got "6529437bffe0ec7bad5ad9d9" (type string)
+Fri Oct 13 2023 19:52 47 [AP] error: globalErrorHandler jwt expired
+Fri Oct 13 2023 19:53 18 [AP] error: globalErrorHandler Category validation failed: category: `Cox's Bazar` is not a valid enum value for path `category`.
+Fri Oct 13 2023 19:56 47 [AP] error: globalErrorHandler Category not found
