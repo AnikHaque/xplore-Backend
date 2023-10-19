@@ -52,7 +52,7 @@ const loginUser = async (payload: ILoginUser): Promise<ILoginUserResponse> => {
     throw new ApiError(402, 'Password is incorrect');
   }
 
-  //create access token & refresh token
+  
 
   const { _id: userId, role } = isUserExist;
   const accessToken = jwtHelpers.createToken(
