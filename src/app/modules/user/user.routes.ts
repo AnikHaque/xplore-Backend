@@ -1,56 +1,66 @@
-import express from 'express';
-import { UserController } from './user.controller';
-import { validateRequest } from '../../middlewares/validateRequest';
-import { UserValidation } from './user.validations';
-import auth from '../../middlewares/auth';
-import { ENUM_USER_ROLE } from '../../../enums/user';
+import express from "express";
+import { UserController } from "./user.controller";
+import auth from "../../middleware/auth";
+import { EAuthGuardRoles } from "../../../enums/AuthGuard";
 
 const router = express.Router();
 
-router.post(
-  '/create-user',
-  validateRequest(UserValidation.create),
-  UserController.createUser,
-);
-router.post(
-  '/create-admin',
-  auth(ENUM_USER_ROLE.SUPER_ADMIN),
-  validateRequest(UserValidation.create),
-  UserController.createAdmin,
-);
-router.put(
-  '/update-user-avatar',
-
-  auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.USER),
-  UserController.updateProfilePicture,
+router.get(
+  "/profile",
+  auth(
+    EAuthGuardRoles.ADMIN,
+    EAuthGuardRoles.SUPER_ADMIN,
+    EAuthGuardRoles.TOURIST
+  ),
+  UserController.getUserProfile
 );
 
 router.get(
-  '/',
-  auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.SUPER_ADMIN),
-  UserController.getAllUsers,
+  "/",
+  auth(EAuthGuardRoles.ADMIN, EAuthGuardRoles.SUPER_ADMIN),
+  UserController.getAllUser
 );
+
 router.get(
-  '/:id',
-  auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.USER, ENUM_USER_ROLE.SUPER_ADMIN),
-  UserController.getSingleUser,
+  "/:id",
+  auth(
+    EAuthGuardRoles.ADMIN,
+    EAuthGuardRoles.SUPER_ADMIN,
+    EAuthGuardRoles.TOURIST
+  ),
+  UserController.getSingleUserById
 );
+
 router.patch(
-  '/update-my-profile/:id',
-  validateRequest(UserValidation.updateUserZodSchema),
-  auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.USER, ENUM_USER_ROLE.SUPER_ADMIN),
-  UserController.updateUser,
+  "/update-single/:id",
+  auth(
+    EAuthGuardRoles.ADMIN,
+    EAuthGuardRoles.SUPER_ADMIN,
+    EAuthGuardRoles.TOURIST
+  ),
+  UserController.updateSingleUserById
 );
+
 router.patch(
-  '/user-profile/:id',
-  validateRequest(UserValidation.updateUserZodSchema),
-  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
-  UserController.updateUser,
+  "/",
+  auth(
+    EAuthGuardRoles.ADMIN,
+    EAuthGuardRoles.SUPER_ADMIN,
+    EAuthGuardRoles.TOURIST
+  ),
+  UserController.updateUser
 );
+
+router.patch(
+  "/update-role/:id",
+  auth(EAuthGuardRoles.ADMIN, EAuthGuardRoles.SUPER_ADMIN),
+  UserController.updateRole
+);
+
 router.delete(
-  '/:id',
-  auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.SUPER_ADMIN),
-  UserController.deleteUser,
+  "/:id",
+  auth(EAuthGuardRoles.ADMIN, EAuthGuardRoles.SUPER_ADMIN),
+  UserController.deleteUser
 );
 
 export const UserRoutes = router;

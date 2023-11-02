@@ -1,0 +1,171 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String    @id @default(uuid())
+  name     String?
+  email    String
+  password String
+  role     UserRoles
+  phone    String?
+  address  String?
+  image    String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  review   Review[]
+  cart     Cart[]
+  booking  Booking[]
+  feedback Feedback[]
+
+  @@map("users")
+}
+
+model Services {
+  id               String       @id @default(uuid())
+  title            String
+  day              Int
+  age              Int
+  how_month        String
+  availability     Int
+  departure        String
+  departureTime    String
+  returnTime       String
+  included         String[]
+  notIncluded      String[]
+  lat              String
+  long             String
+  description      String
+  image            String
+  price            Float
+  availabilityType ServiceAvail
+  location         String
+  category         String       @default("luxury")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  review  Review[]
+  cart    Cart[]
+  booking Booking[]
+}
+
+model Review {
+  id String @id @default(uuid())
+
+  scale       Float
+  description String
+
+  userId String
+  user   User   @relation(references: [id], fields: [userId])
+
+  serviceId String
+  service   Services @relation(references: [id], fields: [serviceId])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Booking {
+  id        String        @id @default(uuid())
+  date_from String
+  date_to   String
+  how_day   Int
+  adult     Int
+  child     Int
+  infant    Int
+  status    BookingStatus @default(PENDING)
+
+  userId String
+  user   User   @relation(references: [id], fields: [userId])
+
+  serviceId String
+  service   Services @relation(references: [id], fields: [serviceId])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Cart {
+  id String @id @default(uuid())
+
+  userId String
+  user   User   @relation(references: [id], fields: [userId])
+
+  serviceId String
+  service   Services @relation(references: [id], fields: [serviceId])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Feedback {
+  id          String @id @default(uuid())
+  description String
+
+  userId String
+  user   User   @relation(references: [id], fields: [userId])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Blog {
+  id          String @id @default(uuid())
+  title       String
+  description String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model FAQ {
+  id          String @id @default(uuid())
+  title       String
+  description String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum UserRoles {
+  admin
+  super_admin
+  tourist
+}
+
+enum ServiceAvail {
+  AVAILABLE
+  UPCOMING
+}
+
+enum BookingStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum ServiceCategory {
+  luxury
+  travel
+  backpacking
+  road
+  trips
+  volunteer
+  educational
+  medical
+  religious
+  tourism
+  pilgrimage
+  honeymoon
+}

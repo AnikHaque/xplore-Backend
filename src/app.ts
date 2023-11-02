@@ -1,37 +1,40 @@
-import express, { Application } from 'express';
-import cors from 'cors';
-import { rateLimit } from 'express-rate-limit';
-import globalErrorHandler from './app/middlewares/globalErrorHandler';
-import routes from './app/routes';
-import { NotFoundHandler } from './errors/NotFoundHandler';
-import cookieParser from 'cookie-parser';
+import express, { Application, NextFunction, Request, Response } from "express";
+import cors from "cors";
+import cookieParser from "cookie-parser";
+import httpStatus from "http-status";
+import ErrorHandler from "./app/middleware/ErrorHandler";
+import router from "./app/routes";
 
-export const app: Application = express();
-//cors
-app.use(
-  cors({
-    origin: 'http://localhost:3000',
-    credentials: true,
-  }),
-);
+const app: Application = express();
+
+const corsOptions = {
+  origin: true,
+  credentials: true,
+};
+
+app.use("*", cors(corsOptions));
+
 app.use(cookieParser());
 
-//parser
-app.use(express.json({ limit: '900mb' }));
-app.use(express.urlencoded({ extended: true, limit: '900mb' }));
-//Rate limit
-const limiter = rateLimit({
-  max: 100,
-  windowMs: 15 * 60 * 1000,
-  standardHeaders: 'draft-7',
-  legacyHeaders: false,
-  message: 'too many requests sent by this ip, please try again in 15 minute !',
-});
-//All Routes
-app.use('/api/v1', routes);
-app.use(limiter);
-//Global Error Handler
-app.use(globalErrorHandler);
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-//handle not found
-app.use(NotFoundHandler.handle);
+app.use("/api/v1", router);
+
+app.use(ErrorHandler);
+
+app.use((req: Request, res: Response, next: NextFunction) => {
+  res.status(httpStatus.NOT_FOUND).json({
+    success: false,
+    message: "Not Found",
+    errorMessages: [
+      {
+        path: req.originalUrl,
+        message: "Api Not Found",
+      },
+    ],
+  });
+  next();
+});
+
+export default app;

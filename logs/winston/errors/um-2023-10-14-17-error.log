@@ -1,5 +1,0 @@
-Sat Oct 14 2023 17:1 1 [AP] error: globalErrorHandler Cart validation failed: service: Path `service` is required., user: Path `user` is required.
-Sat Oct 14 2023 17:2 18 [AP] error: globalErrorHandler Service already exists
-Sat Oct 14 2023 17:3 44 [AP] error: globalErrorHandler Cannot populate path `data.service` because it is not in your schema. Set the `strictPopulate` option to false to override.
-Sat Oct 14 2023 17:17 21 [AP] error: globalErrorHandler Cast to ObjectId failed for value "cart" (type string) at path "_id" for model "Service"
-Sat Oct 14 2023 17:17 36 [AP] error: globalErrorHandler Cast to ObjectId failed for value "cart" (type string) at path "_id" for model "Service"

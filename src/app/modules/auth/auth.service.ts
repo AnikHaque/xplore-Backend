@@ -1,70 +1,70 @@
-import jwt, { JwtPayload, Secret } from 'jsonwebtoken';
-import config from '../../../config';
+import { User } from "@prisma/client";
+import prisma from "../../instance/prisma";
+import { iLogin } from "./auth.interface";
+import bcrypt from "bcrypt";
+import config from "../../../config";
+import ApiError from "../../../errors/ApiError";
+import httpStatus from "http-status";
+import { JwtHelpers } from "../../../handler/JwtHandler";
 
-import {
-  IChangePassword,
-  ILoginUser,
-  ILoginUserResponse,
-  IRefreshTokenResponse,
-} from './auth.interface';
-import User from '../user/user.model';
-import { jwtHelpers } from '../../../helpers/jwtHelpers';
-import ApiError from '../../../errors/Apierror';
-import { IActivationRequest, IUser } from '../user/user.interface';
+const signUp = async (payload: User): Promise<Partial<User>> => {
+  const { password, ...signupData } = payload;
 
-//!
-const activateUser = async (payload: IActivationRequest) => {
-  const { activation_code, activation_token } = payload;
-  const newUser: { user: IUser; activationCode: string } = jwt.verify(
-    activation_token,
-    config.activation_secret as string,
-  ) as { user: IUser; activationCode: string };
-  if (newUser.activationCode !== activation_code) {
-    throw new ApiError(400, 'Activation code is not valid');
-  }
-  const { name, email, password } = newUser.user;
-  const existUser = await User.findOne({ email });
-  if (existUser) {
-    throw new ApiError(400, 'Email is already exist');
-  }
-  const user = await User.create({
-    name,
-    email,
-    password,
+  const hash = await bcrypt.hash(password, Number(config.bcrypt.salt));
+
+  payload.password = hash;
+
+  const result = await prisma.user.create({
+    data: payload,
+    select: {
+      id: true,
+      name: true,
+      role: true,
+      email: true,
+      image: true,
+      password: false,
+      phone: true,
+      address: true,
+      createdAt: true,
+      updatedAt: true,
+    },
   });
-  return user;
+
+  return result;
 };
-//!
 
-const loginUser = async (payload: ILoginUser): Promise<ILoginUserResponse> => {
-  const { email, password } = payload;
+const login = async (payload: iLogin) => {
+  const isExistUser = await prisma.user.findFirst({
+    where: {
+      email: payload.email,
+    },
+  });
 
-  const isUserExist = await User.isUserExist(email);
-
-  if (!isUserExist) {
-    throw new ApiError(404, 'User does not exist');
+  if (!isExistUser) {
+    throw new ApiError(httpStatus.FORBIDDEN, "Your Account Not Found");
   }
 
-  if (
-    isUserExist.password &&
-    !(await User.isPasswordMatched(password, isUserExist.password))
-  ) {
-    throw new ApiError(402, 'Password is incorrect');
-  }
-
-  
-
-  const { _id: userId, role } = isUserExist;
-  const accessToken = jwtHelpers.createToken(
-    { userId, role },
-    config.jwt.secret as Secret,
-    config.jwt.expires_in as string,
+  const isPasswordMatch = await bcrypt.compare(
+    payload.password,
+    isExistUser.password
   );
-  //Create refresh token
-  const refreshToken = jwtHelpers.createToken(
-    { userId, role },
-    config.jwt.refresh_secret as Secret,
-    config.jwt.refresh_expires_in as string,
+
+  if (!isPasswordMatch) {
+    throw new ApiError(httpStatus.UNAUTHORIZED, "Password Not Match");
+  }
+
+  const { id, email, role } = isExistUser;
+
+  const accessToken = JwtHelpers.createToken(
+    { id, email, role },
+    config.jwt.secret as string,
+    config.jwt.expiresIn as string
+  );
+
+  const refreshToken = JwtHelpers.createToken(
+    { id, email, role },
+    config.jwt.refresh_secret as string,
+    config.jwt.refresh_expiresIn as string
   );
 
   return {
@@ -73,65 +73,38 @@ const loginUser = async (payload: ILoginUser): Promise<ILoginUserResponse> => {
   };
 };
 
-const refreshToken = async (token: string): Promise<IRefreshTokenResponse> => {
- 
-  let verifiedToken = null;
+const refreshToken = async (token: string) => {
+  let verifyUser;
   try {
-    verifiedToken = jwtHelpers.verifyToken(
+    verifyUser = JwtHelpers.verifyToken(
       token,
-      config.jwt.refresh_secret as Secret,
+      config.jwt.refresh_secret as string
     );
-  } catch (err) {
-    throw new ApiError(402, 'Invalid Refresh Token');
+  } catch (error) {
+    throw new ApiError(httpStatus.FORBIDDEN, "You are not authorized");
   }
 
-  const { userId } = verifiedToken;
-
-  // checking deleted user's refresh token
-
-  const isUserExist = await User.isUserExist(userId);
-  if (!isUserExist) {
-    throw new ApiError(403, 'User does not exist');
-  }
-  //generate new token
-
-  const newAccessToken = jwtHelpers.createToken(
-    {
-      id: isUserExist._id,
-      role: isUserExist.role,
+  const isExistUser = await prisma.user.findUnique({
+    where: {
+      id: verifyUser.id,
     },
-    config.jwt.secret as Secret,
-    config.jwt.expires_in as string,
+  });
+
+  if (!isExistUser) {
+    throw new ApiError(httpStatus.FORBIDDEN, "Your Account Not Found");
+  }
+
+  const { id, email, role } = isExistUser;
+
+  const accessToken = JwtHelpers.createToken(
+    { id, email, role },
+    config.jwt.secret as string,
+    config.jwt.expiresIn as string
   );
 
   return {
-    accessToken: newAccessToken,
+    accessToken,
   };
 };
 
-const changePassword = async (
-  user: JwtPayload | null,
-  payload: IChangePassword,
-): Promise<void> => {
-  const { oldPassword } = payload;
-  const isUserExist = await User.findOne({ id: user?.userId }).select(
-    '+password',
-  );
-  if (!isUserExist) {
-    throw new ApiError(404, 'User does not exist');
-  }
-  if (
-    isUserExist.password &&
-    !(await User.isPasswordMatched(oldPassword, isUserExist.password))
-  ) {
-    throw new ApiError(402, 'Old password is incorrect');
-  }
-
-  isUserExist.save();
-};
-export const AuthService = {
-  loginUser,
-  refreshToken,
-  changePassword,
-  activateUser,
-};
+export const AuthService = { signUp, login, refreshToken };

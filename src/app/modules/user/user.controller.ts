@@ -1,121 +1,111 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-import { Request, RequestHandler, Response } from 'express';
-import { UserService } from './user.service';
+import { Request, Response } from "express";
+import AsyncCatch from "../../../shared/AsyncCatch";
+import { userServices } from "./user.service";
+import ProvideResponse from "../../../shared/ProviceResponse";
+import httpStatus from "http-status";
+import pick from "../../../shared/pick";
+import { userFilterableFields, userPaginationOptions } from "./user.constants";
 
-import sendResponse from '../../../shared/sendResponse';
-import { IUser } from './user.interface';
-import catchAsync from '../../../shared/catchasync';
-//!
-const createUser: RequestHandler = catchAsync(
-  async (req: Request, res: Response) => {
-    const { ...userData } = req.body;
+const getUserProfile = AsyncCatch(async (req: Request, res: Response) => {
+  const user = req.user;
 
-    const result = await UserService.createUser(userData);
+  const result = await userServices.getUserProfile(user);
 
-    sendResponse(res, {
-      statusCode: 200,
-      success: true,
-      message: 'User created successfully',
-      data: result,
-    });
-  },
-);
-//!
-const createAdmin: RequestHandler = catchAsync(
-  async (req: Request, res: Response) => {
-    const { ...adminData } = req.body;
-
-    const result = await UserService.createAdmin(adminData);
-
-    sendResponse(res, {
-      statusCode: 200,
-      success: true,
-      message: 'Admin created successfully',
-      data: result,
-    });
-  },
-);
-//!
-const getAllUsers = catchAsync(async (req: Request, res: Response) => {
-  const result = await UserService.getAllUsers();
-  sendResponse<IUser[]>(res, {
-    statusCode: 200,
+  ProvideResponse(res, {
+    statusCode: httpStatus.OK,
     success: true,
-    message: 'User retrieved successfully',
+    message: "Profile Get Successful",
     data: result,
   });
 });
-//!
-const getSingleUser = catchAsync(async (req: Request, res: Response) => {
-  const id = req.params.id;
-  // console.log(user);
 
-  const result = await UserService.getSingleUser(id);
-  sendResponse<IUser>(res, {
-    statusCode: 200,
-    success: true,
-    message: 'User retrieved successfully',
-    data: result,
-  });
-});
-//!
-const updateProfilePicture: RequestHandler = catchAsync(
-  async (req: Request, res: Response) => {
-    // console.log(req.body, 'Body');
-    //@ts-ignore
-    const result = await UserService.updateProfilePicture(req);
-    sendResponse(res, {
-      statusCode: 400,
-      success: true,
-      message: 'Picture updated successfully',
-      data: result,
-    });
-  },
-);
-//!
-const updateUser = catchAsync(async (req: Request, res: Response) => {
-  const id = req.params.id;
+const getAllUser = AsyncCatch(async (req: Request, res: Response) => {
+  const pagOptions = pick(req.query, userPaginationOptions);
+  const filters = pick(req.query, userFilterableFields);
 
-  const updatedData = req.body;
+  const result = await userServices.getAllUser(pagOptions, filters);
 
-  const result = await UserService.updateUser(id, updatedData);
-  sendResponse<IUser>(res, {
-    statusCode: 200,
+  ProvideResponse(res, {
+    statusCode: httpStatus.OK,
     success: true,
-    message: 'User updated successfully',
+    message: "All User Fetched Successful",
+    meta: result.meta,
+    data: result.data,
+  });
+});
+
+const getSingleUserById = AsyncCatch(async (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  const result = await userServices.getSingleUserById(id);
+
+  ProvideResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "User Get Successful",
     data: result,
   });
 });
-//!
-const updateUserByAdmin = catchAsync(async (req: Request, res: Response) => {
-  const id = req.params.id;
-  const updatedData = req.body;
-  const result = await UserService.updateUserByAdmin(id, updatedData);
-  sendResponse<IUser>(res, {
-    statusCode: 200,
+const updateSingleUserById = AsyncCatch(async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const { ...updatedData } = req.body;
+
+  const result = await userServices.updateSingleUserById(id, updatedData);
+
+  ProvideResponse(res, {
+    statusCode: httpStatus.OK,
     success: true,
-    message: 'User updated successfully',
+    message: "User Update Successful",
     data: result,
   });
 });
-//!
-const deleteUser = catchAsync(async (req: Request, res: Response) => {
-  const id = req.params.id;
-  const result = await UserService.deleteUser(id);
-  sendResponse<IUser>(res, {
-    statusCode: 200,
+
+const updateUser = AsyncCatch(async (req: Request, res: Response) => {
+  const { ...userData } = req.body;
+  const user = req.user;
+
+  const result = await userServices.updateUser(userData, user);
+
+  ProvideResponse(res, {
+    statusCode: httpStatus.OK,
     success: true,
-    message: 'User deleted successfully',
+    message: "Profile Update Successful",
     data: result,
   });
 });
+
+const updateRole = AsyncCatch(async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const { role } = req.body;
+
+  const result = await userServices.updateRole(id, { role });
+
+  ProvideResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Role Update Successful",
+    data: result,
+  });
+});
+const deleteUser = AsyncCatch(async (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  const result = await userServices.deleteUser(id);
+
+  ProvideResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "User Deleted Successful",
+    data: result,
+  });
+});
+
 export const UserController = {
-  createUser,
-  createAdmin,
-  getAllUsers,
-  getSingleUser,
-  updateProfilePicture,
+  getUserProfile,
   updateUser,
+  getAllUser,
+  updateRole,
+  getSingleUserById,
+  updateSingleUserById,
   deleteUser,
-  updateUserByAdmin,
 };

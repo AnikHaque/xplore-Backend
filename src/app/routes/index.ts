@@ -1,50 +1,55 @@
-import express from 'express';
-import { UserRoutes } from '../modules/user/user.routes';
-import { AuthRoutes } from '../modules/auth/auth.route';
-import { ServiceRoutes } from '../modules/service/service.routes';
-
-import { BookingRoutes } from '../modules/bookings/booking.routes';
-import { CategoryRoutes } from '../modules/category/category.routes';
-import { LayoutRoutes } from '../modules/layouts/layouts.routes';
-import { AnalyticsRoutes } from '../modules/analytics/analytics.routes';
-import { ServeyRoutes } from '../modules/servey/servey.routes';
+import express from "express";
+import { AuthRoutes } from "../modules/auth/auth.routes";
+import { ServicesRoutes } from "../modules/services/services.routes";
+import { ReviewsRoutes } from "../modules/reviews/reviews.routes";
+import { BookingRoutes } from "../modules/booking/booking.routes";
+import { CartRoutes } from "../modules/cart/cart.routes";
+import { UserRoutes } from "../modules/user/user.routes";
+import { FeedbackRoutes } from "../modules/feedback/feedback.routes";
+import { BlogRoutes } from "../modules/blog/blog.routes";
+import { FAQRoutes } from "../modules/faq/faq.routes";
 
 const router = express.Router();
 
-const moduleRoutes = [
+const routes = [
   {
-    path: '/user',
-    route: UserRoutes,
-  },
-  {
-    path: '/auth',
+    path: "/auth",
     route: AuthRoutes,
   },
   {
-    path: '/services',
-    route: ServiceRoutes,
+    path: "/user",
+    route: UserRoutes,
   },
   {
-    path: '/category',
-    route: CategoryRoutes,
+    path: "/services",
+    route: ServicesRoutes,
   },
   {
-    path: '/bookings',
+    path: "/reviews",
+    route: ReviewsRoutes,
+  },
+  {
+    path: "/booking",
     route: BookingRoutes,
   },
   {
-    path: '/layouts',
-    route: LayoutRoutes,
+    path: "/cart",
+    route: CartRoutes,
   },
   {
-    path: '/analytics',
-    route: AnalyticsRoutes,
+    path: "/feedback",
+    route: FeedbackRoutes,
   },
   {
-    path: '/servey',
-    route: ServeyRoutes,
+    path: "/blog",
+    route: BlogRoutes,
+  },
+  {
+    path: "/faq",
+    route: FAQRoutes,
   },
 ];
-moduleRoutes.forEach(route => router.use(route.path, route.route));
+
+routes.forEach((route) => router.use(route.path, route.route));
 
 export default router;

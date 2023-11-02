@@ -1,6 +1,0 @@
-Wed Oct 18 2023 18:0 44 [AP] error: globalErrorHandler Cast to ObjectId failed for value "" (type string) at path "category" for model "Service"
-Wed Oct 18 2023 18:0 50 [AP] error: globalErrorHandler Cast to ObjectId failed for value "" (type string) at path "category" for model "Service"
-Wed Oct 18 2023 18:2 56 [AP] error: globalErrorHandler Cast to ObjectId failed for value "" (type string) at path "category" for model "Service"
-Wed Oct 18 2023 18:3 9 [AP] error: globalErrorHandler Cast to ObjectId failed for value "" (type string) at path "category" for model "Service"
-Wed Oct 18 2023 18:3 20 [AP] error: globalErrorHandler Cast to ObjectId failed for value "" (type string) at path "category" for model "Service"
-Wed Oct 18 2023 18:13 51 [AP] error: globalErrorHandler getaddrinfo ENOTFOUND ac-fchdu0l-shard-00-00.tjc9clz.mongodb.net

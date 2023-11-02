@@ -1,2 +1,0 @@
-Fri Oct 13 2023 13:3 17 [AP] error: globalErrorHandler Rooms are already booked for the specified date range
-Fri Oct 13 2023 13:3 29 [AP] error: globalErrorHandler Booking validation failed: totalPrice: Cast to Number failed for value "NaN" (type number) at path "totalPrice"

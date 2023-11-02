@@ -1,8 +1,0 @@
-Thu Oct 12 2023 17:12 27 [AP] error: globalErrorHandler Service validation failed: reviews.1.user: Cast to ObjectId failed for value "{ name: 'User2' }" (type Object) at path "user" because of "BSONError"
-Thu Oct 12 2023 17:14 7 [AP] error: globalErrorHandler Cannot populate path `rooms` because it is not in your schema. Set the `strictPopulate` option to false to override.
-Thu Oct 12 2023 17:23 21 [AP] error: globalErrorHandler Cannot read properties of undefined (reading 'create')
-Thu Oct 12 2023 17:24 19 [AP] error: globalErrorHandler Cannot read properties of undefined (reading 'create')
-Thu Oct 12 2023 17:26 47 [AP] error: globalErrorHandler Cannot read properties of undefined (reading 'create')
-Thu Oct 12 2023 17:27 16 [AP] error: globalErrorHandler Cannot read properties of undefined (reading 'create')
-Thu Oct 12 2023 17:27 42 [AP] error: globalErrorHandler Cannot read properties of undefined (reading 'create')
-Thu Oct 12 2023 17:59 22 [AP] error: globalErrorHandler Category validation failed: category: `Cox's Bazar` is not a valid enum value for path `category`.

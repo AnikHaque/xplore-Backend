@@ -1,23 +1,4 @@
-import { ENUM_USER_ROLE } from '../../../enums/user';
-
-export type ILoginUser = {
+export interface iLogin {
   email: string;
   password: string;
-};
-export type IChangePassword = {
-  oldPassword: string;
-  newPassword: string;
-};
-export type ILoginUserResponse = {
-  accessToken: string;
-  refreshToken?: string;
-};
-
-export type IRefreshTokenResponse = {
-  accessToken: string;
-};
-
-export type IVerifiedLoginUser = {
-  userId: string;
-  role: ENUM_USER_ROLE;
-};
+}

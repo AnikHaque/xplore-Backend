@@ -1,62 +1,63 @@
-import { Request, RequestHandler, Response } from 'express';
+import { NextFunction, Request, Response } from "express";
+import AsyncCatch from "../../../shared/AsyncCatch";
+import ProvideResponse from "../../../shared/ProviceResponse";
+import httpStatus from "http-status";
+import { AuthService } from "./auth.service";
+import config from "../../../config";
 
-import sendResponse from '../../../shared/sendResponse';
-import { AuthService } from './auth.service';
+const signUp = AsyncCatch(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const { ...userInfo } = req.body;
 
-import { ILoginUserResponse, IRefreshTokenResponse } from './auth.interface';
-import catchAsync from '../../../shared/catchasync';
-//!
-const loginUser = catchAsync(async (req: Request, res: Response) => {
-  const { ...loginData } = req.body;
-  const result = await AuthService.loginUser(loginData);
-  const { ...others } = result;
-  sendResponse<ILoginUserResponse>(res, {
-    statusCode: 200,
-    success: true,
-    message: 'User loggedin successfully !',
-    data: others,
-  });
-});
-//!
-const activateUser: RequestHandler = catchAsync(
-  async (req: Request, res: Response) => {
-    await AuthService.activateUser(req.body);
+    const result = await AuthService.signUp(userInfo);
 
-    sendResponse(res, {
-      statusCode: 201,
+    ProvideResponse(res, {
+      statusCode: httpStatus.OK,
       success: true,
-      message: 'User activate successful',
+      message: "Congratulations!! Registration Successful",
+      data: result,
     });
-  },
+  }
 );
-//!
-const refreshToken = catchAsync(async (req: Request, res: Response) => {
-  const { refreshToken } = req.cookies;
-  const result = await AuthService.refreshToken(refreshToken);
 
-  sendResponse<IRefreshTokenResponse>(res, {
-    statusCode: 200,
-    success: true,
-    message: 'User lohggedin successfully !',
-    data: result,
-  });
-});
-//!
-const changePassword = catchAsync(async (req: Request, res: Response) => {
-  const { ...passwordData } = req.body;
-  const user = req.user;
+const login = AsyncCatch(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const { ...loginInfo } = req.body;
 
-  await AuthService.changePassword(user, passwordData);
+    const result = await AuthService.login(loginInfo);
 
-  sendResponse<ILoginUserResponse>(res, {
-    statusCode: 200,
-    success: true,
-    message: 'Password change successfully !',
-  });
-});
+    res.cookie("refreshToken", result.refreshToken, {
+      secure: config.env === "production",
+      httpOnly: true,
+    });
+
+    ProvideResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: "Login Request Successful",
+      access_token: result.accessToken,
+      refresh_token: result.refreshToken,
+    });
+  }
+);
+
+const refreshToken = AsyncCatch(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const { refreshToken } = req.body;
+
+    const result = await AuthService.refreshToken(refreshToken);
+
+    ProvideResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: "Refresh Token Generate Successful",
+      access_token: result.accessToken,
+    });
+  }
+);
+
 export const AuthController = {
-  loginUser,
+  signUp,
+  login,
   refreshToken,
-  changePassword,
-  activateUser,
 };
