@@ -14,11 +14,6 @@ pass: 123456
 <br />
 
 
-
-## Introduction
-
-Welcome to the Travel Agency Website! This README provides a detailed overview of the website's features, functionalities, and the technologies used in its development. The website is designed to cater to users, administrators, and super administrators, offering a comprehensive platform for travel services.
-
 ## Technologies
 
 The Travel Agency Website is built using the following technologies:
