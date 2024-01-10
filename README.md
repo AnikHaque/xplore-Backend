@@ -13,17 +13,7 @@ email : tourist@xplore.com
 pass: 123456
 <br />
 
-## Table of Contents
 
-1. [Introduction](#introduction)
-2. [User Features](#user-features)
-3. [Admin Features](#admin-features)
-4. [Super Admin Features](#super-admin-features)
-5. [Installation](#installation)
-6. [Usage](#usage)
-7. [Contributing](#contributing)
-8. [Technologies](#technologies)
-9. [License](#license)
 
 ## Introduction
 
